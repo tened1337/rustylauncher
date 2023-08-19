@@ -1,24 +1,142 @@
 <!DOCTYPE html>
-<html lang="ru"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Rusty Launcher</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Вики</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>API Вики</h1>
+        <!-- Здесь ваш контент -->
 
-    <main>
-      <a href="https://vk.com/rusty_io">
-        <img src="bane.svg" width="300" height="300" alt="Rusty БЕЙН">
-      </a>
+        <!-- Пример запроса на C# -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>Пример запроса на C#</h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#csharpCode" aria-expanded="false" aria-controls="csharpCode">
+                    Показать код C#
+                </button>
+                <div class="collapse mt-3" id="csharpCode">
+                    <pre>
+<code class="csharp">
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-      <h1>Rusty Launcher beta</h1>
+class Program
+{
+    static async Task Main()
+    {
+        string apiUrl = "https://your-api-url.com/get_list_games.php"; // Замените на фактический URL вашего API.
 
-      <p>
-        <a href="https://vk.com/rusty_io">Vk group</a>
-      </p>
-    </main>
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-  
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(json);
+                }
+                else
+                {
+                    Console.WriteLine($"Ошибка при запросе: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
+            }
+        }
+    }
+}
+</code>
+                    </pre>
+                </div>
+            </div>
+        </div>
 
-</body></html>
+        <!-- Пример запроса на C++ -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>Пример запроса на C++</h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#cppCode" aria-expanded="false" aria-controls="cppCode">
+                    Показать код C++
+                </button>
+                <div class="collapse mt-3" id="cppCode">
+                    <pre>
+<code class="cpp">
+#include &lt;iostream&gt;
+#include &lt;curl/curl.h&gt;
+
+int main() {
+    CURL *curl;
+    CURLcode res;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+
+    curl = curl_easy_init();
+    if(curl) {
+        const char* apiUrl = "https://your-api-url.com/get_list_games.php"; // Замените на фактический URL вашего API.
+
+        curl_easy_setopt(curl, CURLOPT_URL, apiUrl);
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+
+        res = curl_easy_perform(curl);
+
+        if(res != CURLE_OK)
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+
+        curl_easy_cleanup(curl);
+    }
+
+    curl_global_cleanup();
+
+    return 0;
+}
+</code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пример JSON-ответа -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>Пример JSON-ответа</h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#jsonResponse" aria-expanded="false" aria-controls="jsonResponse">
+                    Показать JSON-ответ
+                </button>
+                <div class="collapse mt-3" id="jsonResponse">
+                    <pre>
+<code class="json">
+[
+    {"GameID":"1","ImageSource":"http://rusty32307.tw1.ru/api/images/background_myrust.jpg","Title":"MyRust 220 девблог","Status":"Null"},
+    {"GameID":"2","ImageSource":"http://rusty32307.tw1.ru/api/images/background_yrs_rust.jpg","Title":"YRS Rust 136 девблог","Status":"Античит: YAC"},
+    {"GameID":"3","ImageSource":"https://sun9-42.userapi.com/impg/0-qNrVmgZUtABx3HNzJqthQXGgSXQzVynBATx3A/y0LHyDMgwEQ.jpg?size=1000x1000&quality=95&sign=6173b899f044a54c7e000adcc93a0aa0&type=album","Title":"Magix Rust 236 девблог","Status":"Античит: MyRustAC"},
+    {"GameID":"4","ImageSource":"https://sun9-48.userapi.com/impg/h5uUxhTkF4J0zpPiZCR_4-YhOPxP6wun85OT1A/GU7JMLaU-64.jpg?size=1000x1000&quality=96&sign=166c6c8a7c002569972b71690fd2e4d5&type=album","Title":"Trinity Rust 198 девблог","Status":"Античит: Gamewer"},
+    {"GameID":"5","ImageSource":"https://sun9-48.userapi.com/impg/h5uUxhTkF4J0zpPiZCR_4-YhOPxP6wun85OT1A/GU7JMLaU-64.jpg?size=1000x1000&quality=96&sign=166c6c8a7c002569972b71690fd2e4d5&type=album","Title":"Trinity Rust 198 девблог","Status":"Античит: Gamewer"}
+]
+</code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Подключение Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
